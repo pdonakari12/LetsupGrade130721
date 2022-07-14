@@ -1,0 +1,89 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+#define MAX 10
+int a[MAX];
+int top=-1;
+
+ void Pop()
+{
+	if(top==-1)
+	{
+		cout<<"underFlow";
+	}
+	else
+	{
+		int val=a[top];
+		top=top-1;
+		cout<<val;
+	}
+}
+
+void traverse()
+{
+	for(int i=top;i>=0;i--){
+		cout<<a[i]<<"\t";
+	}
+}
+
+void Push(int n)
+{
+	if(top==MAX-1)
+	{
+		cout<<"OverFlow";
+	}
+	else	
+	{
+		top=top+1;
+		a[top]=n;
+	}
+}
+
+void Peak()
+{
+	cout<<a[top]<<"\t";
+}
+
+int main() {
+
+    int choice;
+    char ch='y';
+	int value;
+
+	
+do{
+	cout<<"Please Enter Choice";
+    cin>>choice;
+		
+	switch(choice)
+	{
+		case 1:
+		cout<<"Enter value";
+		cin>>value;
+		Push(value);
+		break;
+		case 2:
+		Pop();
+		break;
+		case 3:
+	    Peak();
+		break;
+		case 4:
+		traverse();
+		break;
+		default:"Wrong User Input";
+		break;		
+	}
+	
+	cout<<"Do you want to continue";
+	cin>>ch;
+	
+}
+while(ch=='y');
+   //cout<<head->data<<"\t";
+   
+	return 0;
+}
