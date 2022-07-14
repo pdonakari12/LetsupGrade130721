@@ -1,0 +1,54 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Node{
+	public:
+	int data;
+	Node *add;
+};
+
+void Insertatend(Node *temp ,int n)
+{
+	Node *p =new Node;
+	p->data=n;
+	p->add=NULL;
+	while(temp->add!=NULL)
+	{
+		temp=temp->add;
+	}
+	temp->add=p;
+}
+
+bool search(Node *head,int x)
+{
+	Node* current = head; // Initialize current
+    while (current != NULL)
+    {
+        if (current->data == x)
+            return true;
+        current = current->add;
+    }
+    return false;
+}
+
+
+ 
+int main() {
+	
+	Node *head =new Node;	
+	head->data=8;
+	head->add=NULL;
+    int x = 25;
+	Insertatend(head,12);
+	Insertatend(head,16);
+	Insertatend(head,07);
+	Insertatend(head,21);
+	Insertatend(head,18);
+	
+	search(head, 32)? cout<<"Yes" : cout<<"No";
+   
+	return 0;
+}
